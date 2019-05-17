@@ -6,7 +6,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const cors = require('express-cors');
 const jwt = require('express-jwt');
 
 const app = express();
@@ -19,8 +19,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-  origin: ['*.forestadmin.com'],
-  allowedHeaders: ['Authorization', 'X-Requested-With', 'Content-Type'],
+  allowedOrigins: ['*.forestadmin.com'],
+  headers: ['Authorization', 'X-Requested-With', 'Content-Type'],
   credentials: true
 }));
 
