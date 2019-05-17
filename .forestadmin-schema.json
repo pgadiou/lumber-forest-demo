@@ -472,7 +472,16 @@
       "validations": []
     }],
     "segments": [],
-    "actions": []
+    "actions": [{
+      "name": "Mark as Live",
+      "type": "bulk",
+      "baseUrl": null,
+      "endpoint": "/forest/actions/mark-as-live",
+      "httpMethod": "POST",
+      "redirect": null,
+      "download": false,
+      "fields": []
+    }]
   }, {
     "name": "customer_stats",
     "nameOld": "customer_stats",
@@ -990,7 +999,28 @@
       "validations": []
     }],
     "segments": [],
-    "actions": []
+    "actions": [{
+      "name": "Mark as done",
+      "type": "single",
+      "baseUrl": null,
+      "endpoint": "/forest/actions/mark-as-done",
+      "httpMethod": "POST",
+      "redirect": null,
+      "download": false,
+      "fields": [{
+        "field": "deliveryIds",
+        "type": {
+
+        },
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": true,
+        "reference": null,
+        "description": "Array of Ids.",
+        "position": 0,
+        "widget": null
+      }]
+    }]
   }, {
     "name": "products",
     "nameOld": "products",

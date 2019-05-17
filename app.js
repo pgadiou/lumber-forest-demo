@@ -42,4 +42,6 @@ app.use(require('forest-express-sequelize').init({
   sequelize: require('./models').sequelize
 }));
 
+// console.log(NODE_ENV)
+
 module.exports = app;

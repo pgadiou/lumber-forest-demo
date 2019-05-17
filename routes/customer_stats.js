@@ -12,7 +12,7 @@ router.get('/customer_stats', Liana.ensureAuthenticated, (req, res, next) => {
   let conditionSearch = '';
 
   if (req.query.search) {
-    conditionSearch = `customers.email LIKE '%${req.query.search}%'`;
+    conditionSearch = `customers.email LIKE '%${req.query.search.replaceAll('\'', '\'\'')}%'`;
   }
 
   const queryData = `
