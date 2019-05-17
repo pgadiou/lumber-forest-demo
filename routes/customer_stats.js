@@ -32,8 +32,6 @@ router.get('/customer_stats', Liana.ensureAuthenticated, (req, res, next) => {
     OFFSET ${offset}
   `;
 
-  console.log(queryData)
-
   const queryCount = `
     SELECT COUNT(*)
     FROM customers
@@ -45,8 +43,6 @@ router.get('/customer_stats', Liana.ensureAuthenticated, (req, res, next) => {
       )
       ${conditionSearch ? `AND ${conditionSearch}` : ''}
   `;
-
-  console.log(queryCount)
 
   return P
     .all([
