@@ -12,5 +12,18 @@ Liana.collection('customer_stats', {
     }, {
       field: 'amount',
       type: 'Number',
-    }]
+  }],
+  actions: [{
+    name: 'Mark as done',
+    type: 'global',
+    fields: [{
+      field: 'deliveryIds',
+      description: 'Array of Ids.',
+      type: ['Number'],
+      isRequired: true,
+    }],
+  }],
+
 });
+
+//mark as done triggers an action defined in the routes for orders

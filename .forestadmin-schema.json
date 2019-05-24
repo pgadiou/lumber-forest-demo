@@ -536,7 +536,26 @@
       "validations": []
     }],
     "segments": [],
-    "actions": []
+    "actions": [{
+      "name": "Mark as done",
+      "type": "global",
+      "baseUrl": null,
+      "endpoint": "/forest/actions/mark-as-done",
+      "httpMethod": "POST",
+      "redirect": null,
+      "download": false,
+      "fields": [{
+        "field": "deliveryIds",
+        "type": ["Number"],
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": true,
+        "reference": null,
+        "description": "Array of Ids.",
+        "position": 0,
+        "widget": null
+      }]
+    }]
   }, {
     "name": "customers",
     "nameOld": "customers",
@@ -999,28 +1018,7 @@
       "validations": []
     }],
     "segments": [],
-    "actions": [{
-      "name": "Mark as done",
-      "type": "single",
-      "baseUrl": null,
-      "endpoint": "/forest/actions/mark-as-done",
-      "httpMethod": "POST",
-      "redirect": null,
-      "download": false,
-      "fields": [{
-        "field": "deliveryIds",
-        "type": {
-
-        },
-        "defaultValue": null,
-        "enums": null,
-        "isRequired": true,
-        "reference": null,
-        "description": "Array of Ids.",
-        "position": 0,
-        "widget": null
-      }]
-    }]
+    "actions": []
   }, {
     "name": "products",
     "nameOld": "products",
