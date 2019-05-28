@@ -493,20 +493,6 @@
     "onlyForRelationships": false,
     "paginationType": "page",
     "fields": [{
-      "field": "amount",
-      "type": "Number",
-      "defaultValue": null,
-      "enums": null,
-      "integration": null,
-      "isFilterable": false,
-      "isReadOnly": true,
-      "isRequired": false,
-      "isSortable": false,
-      "isVirtual": true,
-      "reference": null,
-      "inverseOf": null,
-      "validations": []
-    }, {
       "field": "email",
       "type": "String",
       "defaultValue": null,
@@ -521,7 +507,21 @@
       "inverseOf": null,
       "validations": []
     }, {
-      "field": "orders",
+      "field": "orders_count",
+      "type": "Number",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "total_amount",
       "type": "Number",
       "defaultValue": null,
       "enums": null,

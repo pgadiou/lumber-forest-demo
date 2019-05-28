@@ -7,10 +7,10 @@ Liana.collection('customer_stats', {
       field: 'email',
       type: 'String',
     }, {
-      field: 'orders',
+      field: 'orders_count',
       type: 'Number',
     }, {
-      field: 'amount',
+      field: 'total_amount',
       type: 'Number',
   }],
   actions: [{
