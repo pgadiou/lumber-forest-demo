@@ -581,6 +581,20 @@
     "onlyForRelationships": false,
     "paginationType": "page",
     "fields": [{
+      "field": "Country",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "addresses",
       "type": ["Number"],
       "defaultValue": null,
@@ -1031,6 +1045,20 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "state",
+      "type": "Number",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "updated_at",
       "type": "Date",
       "defaultValue": null,
@@ -1046,7 +1074,35 @@
       "validations": []
     }],
     "segments": [],
-    "actions": []
+    "actions": [{
+      "name": "Mark as done",
+      "type": null,
+      "baseUrl": null,
+      "endpoint": "/forest/actions/mark-as-done",
+      "httpMethod": "POST",
+      "redirect": null,
+      "download": false,
+      "fields": [{
+        "field": "deliveryIds",
+        "type": ["Number"],
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": true,
+        "reference": null,
+        "description": "Array of Ids.",
+        "position": 0,
+        "widget": null
+      }]
+    }, {
+      "name": "Test smart field",
+      "type": "bulk",
+      "baseUrl": null,
+      "endpoint": "/forest/actions/test-smart-field",
+      "httpMethod": "POST",
+      "redirect": null,
+      "download": false,
+      "fields": []
+    }]
   }, {
     "name": "products",
     "nameOld": "products",
