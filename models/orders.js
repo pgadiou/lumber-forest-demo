@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   const Model = sequelize.define('orders', {
     'ref': {
       type: DataTypes.STRING,
-      primaryKey: true 
+      primaryKey: true
     },
     'shipping_status': {
       type: DataTypes.STRING,
@@ -28,29 +28,29 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     tableName: 'orders',
     underscored: true,
-    
+
     schema: process.env.DATABASE_SCHEMA,
   });
 
   Model.associate = (models) => {
     Model.belongsTo(models.products, {
       foreignKey: 'product_id',
-      
+
       as: '_product_id',
     });
-    
+
     Model.belongsTo(models.customers, {
       foreignKey: 'customer_id',
-      
+
       as: '_customer_id',
     });
-    
+
     Model.belongsTo(models.deliveries, {
       foreignKey: 'delivery_id',
-      
+
       as: '_delivery_id',
     });
-    
+
   };
 
   return Model;

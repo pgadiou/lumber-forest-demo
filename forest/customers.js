@@ -3,6 +3,8 @@ const models = require('../models/');
 const _ = require('lodash');
 
 Liana.collection('customers', {
+
+  // FIELDS
   fields: [{
     field: 'fullname',
     type: 'String',
@@ -11,6 +13,7 @@ Liana.collection('customers', {
     get: (customer) => {
       return customer.firstname + ' ' + customer.lastname;
     },
+    //SEARCH ON FIRST NAME
     search: function (query, search) {
       let s = models.sequelize;
 
@@ -53,7 +56,36 @@ Liana.collection('customers', {
         // console.log(searchConditions)
         // searchConditions.$or.push(searchAddressCondition);
     }
-  }]
+  }],
+
+  // ACTION
+  actions: [{
+    name: 'levente',
+    type: 'single',
+    fields: [{
+      field: 'columnData',
+      description: 'Data of column',
+      type: 'String',
+      reference: 'customers.firstname',
+      widget: 'belongsto select',
+      // enums: ['toto', 'tata'],
+      isRequired: true,
+    }, {
+      field: 'phone',
+      description: 'prefill',
+      type: 'String',
+    }, {
+      field: 'email',
+      type: 'String',
+    }],
+    values: (context) => {
+      console.log(context)
+      return {
+        phone: 'test',
+        email: context.email,
+      }
+    }
+  }],
 });
 
 

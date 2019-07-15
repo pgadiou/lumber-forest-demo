@@ -569,6 +569,25 @@
         "position": 0,
         "widget": null
       }]
+    }, {
+      "name": "levente",
+      "type": "global",
+      "baseUrl": null,
+      "endpoint": "/forest/actions/levente",
+      "httpMethod": "POST",
+      "redirect": null,
+      "download": false,
+      "fields": [{
+        "field": "columnData",
+        "type": "String",
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": true,
+        "reference": null,
+        "description": "Data of column",
+        "position": 0,
+        "widget": "dropdown"
+      }]
     }]
   }, {
     "name": "customers",
@@ -724,7 +743,46 @@
       "validations": []
     }],
     "segments": [],
-    "actions": []
+    "actions": [{
+      "name": "levente",
+      "type": "single",
+      "baseUrl": null,
+      "endpoint": "/forest/actions/levente",
+      "httpMethod": "POST",
+      "redirect": null,
+      "download": false,
+      "fields": [{
+        "field": "columnData",
+        "type": "String",
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": true,
+        "reference": "customers.firstname",
+        "description": "Data of column",
+        "position": 0,
+        "widget": "belongsto select"
+      }, {
+        "field": "phone",
+        "type": "String",
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": false,
+        "reference": null,
+        "description": "prefill",
+        "position": 1,
+        "widget": null
+      }, {
+        "field": "email",
+        "type": "String",
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": false,
+        "reference": null,
+        "description": null,
+        "position": 2,
+        "widget": null
+      }]
+    }]
   }, {
     "name": "deliveries",
     "nameOld": "deliveries",
@@ -975,6 +1033,34 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "file",
+      "type": "File",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "hello",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "in_transit_at",
       "type": "Date",
       "defaultValue": null,
@@ -985,6 +1071,34 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "jauge",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "json",
+      "type": "JSON",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
       "reference": null,
       "inverseOf": null,
       "validations": []
@@ -1074,35 +1188,7 @@
       "validations": []
     }],
     "segments": [],
-    "actions": [{
-      "name": "Mark as done",
-      "type": null,
-      "baseUrl": null,
-      "endpoint": "/forest/actions/mark-as-done",
-      "httpMethod": "POST",
-      "redirect": null,
-      "download": false,
-      "fields": [{
-        "field": "deliveryIds",
-        "type": ["Number"],
-        "defaultValue": null,
-        "enums": null,
-        "isRequired": true,
-        "reference": null,
-        "description": "Array of Ids.",
-        "position": 0,
-        "widget": null
-      }]
-    }, {
-      "name": "Test smart field",
-      "type": "bulk",
-      "baseUrl": null,
-      "endpoint": "/forest/actions/test-smart-field",
-      "httpMethod": "POST",
-      "redirect": null,
-      "download": false,
-      "fields": []
-    }]
+    "actions": []
   }, {
     "name": "products",
     "nameOld": "products",
@@ -1241,6 +1327,47 @@
       "validations": []
     }, {
       "field": "id",
+      "type": "Number",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }],
+    "segments": [],
+    "actions": []
+  }, {
+    "name": "tests",
+    "nameOld": "tests",
+    "icon": null,
+    "integration": null,
+    "isReadOnly": false,
+    "isSearchable": true,
+    "isVirtual": false,
+    "onlyForRelationships": false,
+    "paginationType": "page",
+    "fields": [{
+      "field": "column2",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "test_field",
       "type": "Number",
       "defaultValue": null,
       "enums": null,
@@ -1466,6 +1593,61 @@
       "validations": []
     }, {
       "field": "vat_amount",
+      "type": "Number",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }],
+    "segments": [],
+    "actions": []
+  }, {
+    "name": "untitled_table",
+    "nameOld": "untitled_table",
+    "icon": null,
+    "integration": null,
+    "isReadOnly": false,
+    "isSearchable": true,
+    "isVirtual": false,
+    "onlyForRelationships": false,
+    "paginationType": "page",
+    "fields": [{
+      "field": "json",
+      "type": "Json",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "test",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "untitled_id",
       "type": "Number",
       "defaultValue": null,
       "enums": null,
