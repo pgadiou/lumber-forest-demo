@@ -457,6 +457,20 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "toto",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "updated_at",
       "type": "Date",
       "defaultValue": null,
@@ -567,6 +581,20 @@
     "onlyForRelationships": false,
     "paginationType": "page",
     "fields": [{
+      "field": "Country",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "addresses",
       "type": ["Number"],
       "defaultValue": null,
@@ -596,6 +624,20 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "deliveries",
+      "type": ["String"],
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": "deliveries.id",
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "email",
       "type": "String",
       "defaultValue": null,
@@ -620,6 +662,20 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "fullname",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
       "reference": null,
       "inverseOf": null,
       "validations": []
@@ -682,7 +738,79 @@
       "validations": []
     }],
     "segments": [],
-    "actions": []
+    "actions": [{
+      "name": "Export etiquettes pdf",
+      "type": "global",
+      "baseUrl": null,
+      "endpoint": "/forest/actions/export-etiquettes",
+      "httpMethod": "POST",
+      "redirect": null,
+      "download": true,
+      "fields": [{
+        "field": "start",
+        "type": "Date",
+        "defaultValue": {
+
+        },
+        "enums": null,
+        "isRequired": true,
+        "reference": null,
+        "description": "Date de début",
+        "position": 0,
+        "widget": null
+      }, {
+        "field": "end",
+        "type": "Date",
+        "defaultValue": {
+
+        },
+        "enums": null,
+        "isRequired": true,
+        "reference": null,
+        "description": "Date de fin",
+        "position": 1,
+        "widget": null
+      }]
+    }, {
+      "name": "levente",
+      "type": "single",
+      "baseUrl": null,
+      "endpoint": "/forest/actions/levente",
+      "httpMethod": "POST",
+      "redirect": null,
+      "download": false,
+      "fields": [{
+        "field": "columnData",
+        "type": "String",
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": true,
+        "reference": "orders",
+        "description": "Data of column",
+        "position": 0,
+        "widget": null
+      }, {
+        "field": "phone",
+        "type": "String",
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": false,
+        "reference": null,
+        "description": "prefill",
+        "position": 1,
+        "widget": null
+      }, {
+        "field": "email",
+        "type": "String",
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": false,
+        "reference": null,
+        "description": null,
+        "position": 2,
+        "widget": null
+      }]
+    }]
   }, {
     "name": "deliveries",
     "nameOld": "deliveries",
@@ -724,7 +852,7 @@
     }, {
       "field": "is_delivered",
       "type": "Boolean",
-      "defaultValue": null,
+      "defaultValue": 1,
       "enums": null,
       "integration": null,
       "isFilterable": true,
@@ -762,6 +890,21 @@
       "isVirtual": false,
       "reference": null,
       "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "orders",
+      "type": ["Number"],
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": "orders.delivery_id",
+      "inverseOf": null,
+      "relationship": "HasMany",
       "validations": []
     }, {
       "field": "phone",
@@ -933,6 +1076,48 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "file",
+      "type": "File",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "hello",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "html example",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "in_transit_at",
       "type": "Date",
       "defaultValue": null,
@@ -943,6 +1128,34 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "jauge",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "json",
+      "type": "JSON",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
       "reference": null,
       "inverseOf": null,
       "validations": []
@@ -999,6 +1212,20 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "state",
+      "type": "Number",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": true,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
       "reference": null,
       "inverseOf": null,
       "validations": []
@@ -1157,6 +1384,47 @@
       "validations": []
     }, {
       "field": "id",
+      "type": "Number",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }],
+    "segments": [],
+    "actions": []
+  }, {
+    "name": "tests",
+    "nameOld": "tests",
+    "icon": null,
+    "integration": null,
+    "isReadOnly": false,
+    "isSearchable": true,
+    "isVirtual": false,
+    "onlyForRelationships": false,
+    "paginationType": "page",
+    "fields": [{
+      "field": "column2",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "test_field",
       "type": "Number",
       "defaultValue": null,
       "enums": null,

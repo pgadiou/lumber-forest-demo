@@ -36,13 +36,67 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     tableName: 'companies',
     underscored: true,
-    
+
     schema: process.env.DATABASE_SCHEMA,
+    hooks: {
+      afterFind: async (companies, options) => {
+        const isFindOne = !companies.length;
+        const limit = isFindOne ? 1 : companies.length;
+        // test
+        if (isFindOne) { companies = [companies] }
+        const companiesIds = companies.map((company) => company.id)
+        console.log(companiesIds)
+        // end test
+        function getTotoValue(order, product) {
+          return order.ref + product.label
+        }
+
+        const orders = await sequelize.models.orders.findAll({ limit })
+        const products = await sequelize.query(`
+          SELECT id, label
+          FROM products
+          LIMIT ${limit}
+        `)
+
+        for (let i = 0; i < limit; i++) {
+          companies[i].toto = getTotoValue(orders[i], products[0][i]);
+        }
+
+        return isFindOne ? companies[0] : companies;
+      }
+      // afterFind: async (companies, options) => {
+      //   const isFindOne = !companies.length;
+
+      //   function getTotoValue(order, product) {
+      //     return order.ref + product.label
+      //   }
+
+      //   console.log(companies)
+      //   // console.log(req.params)
+      //   console.log(companies.length)
+      //   const limit = isFindOne ? 1 : companies.length;
+      //   const orders = await sequelize.models.orders.findAll({ limit })
+      //   const products = await sequelize.query(`
+      //     SELECT id, label
+      //     FROM products
+      //     LIMIT ${limit}
+      //   `)
+      //   // console.log(products)
+      //   // console.log(orders)
+      //   if (isFindOne) {
+      //     companies.toto = getTotoValue(orders[0], products[0][0]);
+      //   } else {
+      //     for (let i = 0; i < limit; i++) {
+      //       companies[i].toto = getTotoValue(orders[i], products[0][i]);
+      //     }
+      //   }
+      //   return companies;
+      // }
+    }
   });
 
   Model.associate = (models) => {
   };
-
   return Model;
 };
 
