@@ -39,23 +39,23 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     tableName: 'transactions',
     underscored: true,
-    
+
     schema: process.env.DATABASE_SCHEMA,
   });
 
   Model.associate = (models) => {
     Model.belongsTo(models.companies, {
       foreignKey: 'beneficiary_company_id',
-      
+
       as: '_beneficiary_company_id',
     });
-    
+
     Model.belongsTo(models.companies, {
       foreignKey: 'emitter_company_id',
-      
+
       as: '_emitter_company_id',
     });
-    
+
   };
 
   return Model;

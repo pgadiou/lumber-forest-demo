@@ -8,7 +8,7 @@ Liana.collection('customer_stats', {
   fields: [{
       field: 'email',
       type: 'String',
-    }, {
+    },{
       field: 'orders_count',
       type: 'Number',
     }, {
@@ -17,6 +17,7 @@ Liana.collection('customer_stats', {
   }],
 
   //ACTIONS
+    //arrays in action form test
   actions: [{
     name: 'Mark as done',
     type: 'global',
@@ -26,16 +27,19 @@ Liana.collection('customer_stats', {
       type: ['Number'],
       isRequired: true,
     }]
-    }, {
-    name: 'levente',
-    type: 'global',
-    fields: [{
-      field: 'columnData',
-      widget: 'dropdown',
-      description: 'Data of column',
-      type: 'String',
-      isRequired: true,
-    }]
-  }]
+    },
+    //dropdown in action form test
+  //   {
+  //   name: 'levente',
+  //   type: 'global',
+  //   fields: [{
+  //     field: 'columnData',
+  //     widget: 'dropdown',
+  //     description: 'Data of column',
+  //     type: 'String',
+  //     isRequired: true,
+  //   }]
+  // }
+  ]
 
 });

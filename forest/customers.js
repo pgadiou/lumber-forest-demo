@@ -1,11 +1,22 @@
 const Liana = require('forest-express-sequelize');
 const models = require('../models/');
 const _ = require('lodash');
+const moment = require('moment');
 
 Liana.collection('customers', {
 
   // FIELDS
-  fields: [{
+
+  fields: [
+
+  {
+    field: 'deliveries',
+    type: ['String'],
+    reference: 'deliveries.id'
+  },
+
+
+  {
     field: 'fullname',
     type: 'String',
 
@@ -26,7 +37,10 @@ Liana.collection('customers', {
 
       return query;
     }
-  }, {
+  },
+
+
+  {
     field: 'Country',
     type: 'String',
 
@@ -36,38 +50,83 @@ Liana.collection('customers', {
     },
 
     // ALLOW SEARCH ON COUNTRY
-    search: function (query, search) {
-        // const sequelize = models.sequelize;
-        // console.log("QUERY BEFORE")
-        // console.log(query)
-        // query.include.push(models.addresses);
-        // console.log("QUERY AFTER")
-        // console.log(query)
-        // console.log("MODELS")
-        // console.log(models.addresses)
-        // const searchAddressCondition = sequelize.and(
-        // { '$addresses.country$' : { $like: `%${search}%` }},
-        // );
-        // console.log("SEARCH ADDRESS CONDITION")
-        // console.log(searchAddressCondition)
+  //   search: function (query, search) {
+  //     const sequelize = models.sequelize;
+  //     console.log("QUERY BEFORE")
+  //     console.log(query)
+  //     query.include.push(models.addresses);
+  //     console.log("QUERY AFTER")
+  //     console.log(query)
+  //     console.log("MODELS")
+  //     console.log(models.addresses)
+  //     const searchAddressCondition = sequelize.and(
+  //     { '$addresses.country$' : { $like: `%${search}%` }},
+  //     );
+  //     console.log("SEARCH ADDRESS CONDITION")
+  //     console.log(searchAddressCondition)
 
-        // const searchConditions = _.find(query.where.$and, '$or');
-        // console.log("SEARCH CONDITIONS")
-        // console.log(searchConditions)
-        // searchConditions.$or.push(searchAddressCondition);
-    }
-  }],
+  //     const searchConditions = _.find(query.where.$and, '$or');
+  //     console.log("SEARCH CONDITIONS")
+  //     console.log(searchConditions)
+  //     searchConditions.$or.push(searchAddressCondition);
+  //   }
+  }
+
+  // FIELD TEST OF ENUMS
+  // {
+  //   field: 'enums',
+  //   type:'Enum',
+  //   enums: ["draft", "ongoing", "done"],
+  //   get: (customer) => {
+  //     return "test"
+  //   }
+  // },
+
+  ],
+
+
+
+
 
   // ACTION
-  actions: [{
+
+  actions: [
+
+  {
+    name: 'Export etiquettes pdf',
+    endpoint: '/forest/actions/export-etiquettes',
+    type: 'global',
+    download: true,
+    fields: [
+            {
+          field: 'start',
+          description: 'Date de début',
+          type: 'Date',
+          isRequired: true,
+        defaultValue: moment().add('-7', 'd').toDate(),
+        },
+            {
+          field: 'end',
+          description: 'Date de fin',
+          type: 'Date',
+          isRequired: true,
+        defaultValue: new Date(),
+        },
+        ],
+  },
+
+
+
+// TEST ACTION WITH PREFILLED VALUE
+  {
     name: 'levente',
     type: 'single',
     fields: [{
       field: 'columnData',
       description: 'Data of column',
       type: 'String',
-      reference: 'customers.firstname',
-      widget: 'belongsto select',
+      reference: 'orders',
+      // widget: 'belongsto select',
       // enums: ['toto', 'tata'],
       isRequired: true,
     }, {
@@ -85,7 +144,10 @@ Liana.collection('customers', {
         email: context.email,
       }
     }
-  }],
+  }
+
+  ],
+
 });
 
 

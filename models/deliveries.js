@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     'is_delivered': {
       type: DataTypes.BOOLEAN,
+      defaultValue: 1,
     },
     'created_at': {
       type: DataTypes.DATE,
@@ -21,11 +22,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     tableName: 'deliveries',
     underscored: true,
-    
+
     schema: process.env.DATABASE_SCHEMA,
   });
 
   Model.associate = (models) => {
+    Model.hasMany(models.orders);
   };
 
   return Model;

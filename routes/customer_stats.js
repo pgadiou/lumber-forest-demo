@@ -50,12 +50,15 @@ router.get('/customer_stats', Liana.ensureAuthenticated, (req, res, next) => {
       models.sequelize.query(queryCount, { type: queryType }),
     ])
     .spread((customerStatsList, customerStatsCount) => {
+      console.log(customerStatsList);
       const customerStatsSerializer = new JSONAPISerializer('customer_stats', {
         attributes: ['email', 'orders_count', 'total_amount'],
         keyForAttribute: 'underscore_case'
       });
       const customerStats = customerStatsSerializer.serialize(customerStatsList);
-      const count = customerStatsCount[0].count
+      const count = customerStatsCount[0].count;
+      // console.log({ ...customerStats, meta:{ count: count }});
+      console.log(customerStats)
       res.send({ ...customerStats, meta:{ count: count }});
     })
     .catch((err) => next(err));
