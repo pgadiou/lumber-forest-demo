@@ -21,7 +21,12 @@ Liana.collection('orders', {
     field: "html example",
     type: "String",
     get: (order) => {
-      return `<div>hello<strong> David</strong><br>Here's a quick recap of today's story: <i>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</i></div>`;
+      return `<div style="background-color:#00000057; color:white; padding:20px;">
+
+      <h2>London</h2>
+      <p>London is the capital city of England. It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+      <a href="https://www.google.com/maps/place/London,+UK/data=!4m2!3m1!1s0x47d8a00baf21de75:0x52963a5addd52a99?sa=X&ved=2ahUKEwj21tWMo5TnAhUSHxoKHastC6UQ8gEwAHoECAsQAQ">Go to map</a>
+      </div>`;
     }
   },
 
